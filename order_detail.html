@@ -25,7 +25,7 @@
                 },
                 success: (result) => {
                     alert("댓글 업로드 됨");
-                    $("#orders").html("");
+                    document.location.reload();
                 },
                 error: (result) => {
                     console.error(result);
@@ -97,7 +97,7 @@
             <span>댓글 내역</span>
             <hr>
             <ul class="list-group list-group-flush" id="comments">
-                <li class="list-group-item">댓글 내용입니다.<br><br> 문민제 (2023.01.25 14:21:34)</li>
+                <li class="list-group-item">테스트 댓글 내용입니다.<br><br> 문민제 (2023.01.25 14:21:34)</li>
             </ul>
         </div>
     </div>
