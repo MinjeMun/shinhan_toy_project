@@ -1,8 +1,11 @@
 from rest_framework import generics, mixins
+from .models import Order, Comment
 
-from .models import Order
-
-from .serializers import OrderSerializer
+from .serializers import (
+    OrderSerializer, 
+    CommentCreateSerializer, 
+    CommentSerializer
+    )
 from .paginations import OrderLargePagination
 
 
@@ -33,14 +36,22 @@ class OrderDetailView(
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, args, kwargs)
 
-# class CommentCreateView(
-#     mixins.CreateModelMixin,
-#     generics.GenericAPIView
-# ):
-#     serializer_class = CommentSerializer
+class CommentView(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    generics.GenericAPIView
+):
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CommentCreateSerializer
+        return CommentSerializer
 
-#     def get_queryset(self):
-#         return Comment.objects.all()
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+        return Comment.objects.filter(order_id = pk)
 
-#     def post(self, request, *args, **kwargs):
-#         return self.create(request, args, kwargs)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, args, kwargs)
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, args, kwargs)

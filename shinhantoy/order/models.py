@@ -19,13 +19,13 @@ class Order(models.Model):
         verbose_name='주문정보'
         verbose_name_plural='주문정보'
 
-# class Comment(models.Model):
-#     member = models.ForeignKey('member.Member', on_delete=models.CASCADE, verbose_name='사용자') 
-#     product = models.ForeignKey('product.Product', on_delete=models.CASCADE, verbose_name='상품')
-#     content = models.TextField(verbose_name='댓글')
-#     tstamp = models.DateTimeField(auto_now_add=True, verbose_name='등록일시')
+class Comment(models.Model):
+    member = models.ForeignKey('member.Member', on_delete=models.CASCADE, verbose_name='작성자') 
+    order = models.ForeignKey('order.Order', on_delete=models.CASCADE, verbose_name='주문명')
+    content = models.TextField(verbose_name='댓글')
+    tstamp = models.DateTimeField(auto_now_add=True, verbose_name='등록일시')
 
-#     class Meta:
-#         db_table = 'shinhan_comment'
-#         verbose_name = '댓글'
-#         verbose_name_plural = '댓글'
+    class Meta:
+        db_table = 'shinhan_comment'
+        verbose_name = '댓글'
+        verbose_name_plural = '댓글'
