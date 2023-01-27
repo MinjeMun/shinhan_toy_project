@@ -37,13 +37,14 @@
                 });
             $.get("http://127.0.0.1:8000/api/order/" + order_id + "/comment?page=" + page)
                 .then((result) => {
+                    console.log(result)
                     page = parseInt(page)
                     const total = result.count
                     let pages = Math.ceil(total / 10)
                     let start_page = page - 2
                     let end_page = page + 2 
                     if (pages < 5) {
-                        for (let i=1; i <= page; i++) {
+                        for (let i=1; i <= pages; i++) {
                             $("#pages").append(
                                 $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
                             )
