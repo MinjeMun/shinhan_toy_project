@@ -47,9 +47,16 @@
 
                         // console.log(pages) 페이지 개수 세기
                         for (let i=start_page; i <= end_page; i++) {
-                            $("#pages").append(
-                                $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
-                            )
+                            if (i==page) {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link active" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
+                            else {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
                         }
                         // 페이지 초기화 
                         

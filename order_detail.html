@@ -45,9 +45,16 @@
                     let end_page = page + 2 
                     if (pages < 5) {
                         for (let i=1; i <= pages; i++) {
-                            $("#pages").append(
-                                $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
-                            )
+                            if (i==page) {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link active" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
+                            else {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
                         }
                     }
                     else if (start_page < 1) {
@@ -60,9 +67,16 @@
                             end_page = page + 3
                         }
                         for (let i=start_page; i <= end_page; i++) {
-                            $("#pages").append(
-                                $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
-                            )
+                            if (i==page) {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link active" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
+                            else {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
                         }
                     }
                     else if (end_page > pages) {
@@ -75,9 +89,16 @@
                             end_page = page
                         }
                         for (let i=start_page; i <= end_page; i++) {
-                            $("#pages").append(
-                                $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
-                            )
+                            if (i==page) {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link active" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
+                            else {
+                                $("#pages").append(
+                                    $(`<li class="page-item"><a class="page-link" onclick="go_page(${i})">${i}</a></li>`)
+                                )
+                            }
                         }
                     }
                     // console.log(result)
