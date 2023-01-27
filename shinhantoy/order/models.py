@@ -20,6 +20,7 @@ class Order(models.Model):
         verbose_name_plural='주문정보'
 
 class Comment(models.Model):
+    # ForeignKey 지정 시 on_delete 꼭 필요 (해당 member가 사라지면 어떻게 처리할지 정책을 정함(CASCADE))
     member = models.ForeignKey('member.Member', on_delete=models.CASCADE, verbose_name='작성자') 
     order = models.ForeignKey('order.Order', on_delete=models.CASCADE, verbose_name='주문명')
     content = models.TextField(verbose_name='댓글')
@@ -29,3 +30,5 @@ class Comment(models.Model):
         db_table = 'shinhan_comment'
         verbose_name = '댓글'
         verbose_name_plural = '댓글'
+
+# migrations 파일은 수정 절대 x => model에서 변경하고 다시 migraiton 하면 수정된 것들이 반영됨
